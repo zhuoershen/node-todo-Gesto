@@ -39,9 +39,10 @@
 			<div class="col-sm-4 col-sm-offset-4">
 
 				<!-- LOOP OVER THE FOOD IN $scope.foods -->
+				
 				<div class="checkbox" ng-repeat="food in foods">
 					<label>
-						<input type="checkbox" ng-click="deleteFood(food._id)"> {{ food.text}}: ${{ food.number}}
+						<button type="checkbox" ng-click="deleteFood(food._id)">delete</button> {{ food.text}}: ${{ food.number}}
 					</label>
 				</div>
 				
@@ -65,7 +66,9 @@
 						<input type="text" class="form-control input-lg text-center" placeholder="Apple, Orange, Pear, Cherry" ng-model="formData.text">
 						<input type="number" class="form-control input-lg text-center" placeholder="Price=$1.99 " ng-model="formData.value" min="0">
 					</div>
-
+					
+					<!--getAll() WILL RETURN THE TOTAL PRICE OF FOODS-->
+					<button type="submit" class="btn btn-primary btn-lg" ng-click="getAll()">All</button>
 					<!-- createFood() WILL CREATE NEW FOODS -->
 					<button type="submit" class="btn btn-primary btn-lg" ng-click="createFood()">Add</button>
 					<!--getTotal() WILL RETURN THE TOTAL PRICE OF FOODS-->

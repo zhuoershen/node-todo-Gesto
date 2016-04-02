@@ -9,11 +9,18 @@ angular.module('foodController', [])
 		// when landing on the page, get all todos and show them
 		// use the service to get all the foods
 		Foods.get1()
-			.success(function(data) {
-				$scope.foods = data;
-				$scope.loading = false;
-			});
-			
+				.success(function(data) {
+					$scope.loading = false;
+					$scope.foods = data;
+		});
+		
+		$scope.getAll = function() {
+			Foods.get1()
+				.success(function(data) {
+					$scope.loading = false;
+					$scope.foods = data;
+				});
+		};	
 		// GET =====================================================================
 		// when “Total” button is pressed, send the total prices in the cart
 		$scope.getTotal = function() {
@@ -31,7 +38,7 @@ angular.module('foodController', [])
 			// validate the formData to make sure that something is there
 			// if form is empty, nothing will happen
 			if (($scope.formData.text != undefined) && ($scope.formData.value != undefined)) {
-				$scope.loading = true;
+				$scope.loading = false;
 
 				// call the create function from our service (returns a promise object)
 				Foods.create($scope.formData)
@@ -54,7 +61,7 @@ angular.module('foodController', [])
 			Foods.delete(id)
 				// if successful creation, call our get function to get all the new todos
 				.success(function(data) {
-					$scope.loading = false;
+					$scope.loading = true;
 					$scope.foods = data;
 				});
 		};
